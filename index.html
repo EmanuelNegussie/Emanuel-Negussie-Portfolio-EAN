@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emanuel Alemu Negussie | Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Full-screen animation overlay -->
+    <div id="page-overlay"></div>
+
+    <!-- Container wrapper that slides down and fades in -->
+    <div id="page-content">
+
+        <header class="hero-section" id="about">
+            <img src="2026 02 22.jpg" alt="My Profile Picture" class="profile-img">
+            <p class="Title">Emanuel Alemu Negussie</p>
+            <p class="subtitle">Student of Shawnigan Lake School</p>
+            <p class="bio">
+                Hello everyone! Welcome to my Digital Home! I am a Shawnigan Lake School Freshmen Student who lives in New Jersey in the United States of America. This website is an all about me and my work.
+            </p>
+        </header>
+
+        <main class="skills-section" id="skills">
+            <div class="card-btn-container" style="margin-bottom: 50px; max-width: 200px; margin-left: auto; margin-right: auto;">
+                <a href="contact.html" class="card-btn fade-link">Contact Me</a>
+            </div>
+
+            <!-- Download Resume Button Container -->
+            <div class="card-btn-container" style="margin-bottom: 50px; max-width: 200px; margin-left: auto; margin-right: auto; margin-top: 15px;">
+            <!-- Removed hardcoded blue colors so it matches your site theme perfectly -->
+            <a href="Emanuel_Negussie_Resume.pdf" download="Emanuel_Negussie_Resume.pdf" class="card-btn" style="text-align: center; display: block;">📥 Download Resume</a>
+            </div>
+
+
+
+            <!-- NEW: ACADEMICS & PROJECTS CUE CARDS SECTION -->
+            <h2 style="margin-bottom: 20px;">Overview</h2>
+            <div class="skills-grid" style="margin-bottom: 60px;">
+                <!-- Academics Card -->
+                <div class="skill-card">
+                    <h3>Academics</h3>
+                    <p>All Schools that I have attended.</p>
+                    <div class="card-btn-container">
+                        <a href="academics-detail.html" class="card-btn fade-link">View Academics</a>
+                    </div>
+                </div>
+
+                <!-- Projects Card -->
+                <div class="skill-card">
+                    <h3>Projects</h3>
+                    <p>Explore independent work, developments, and personal goals.</p>
+                    <div class="card-btn-container">
+                        <a href="projects-detail.html" class="card-btn fade-link">Explore Projects</a>
+                    </div>
+                </div>
+            </div>
+
+            <h2>My Work</h2>
+            <div class="skills-grid">
+                <!-- Card 1: Model UN -->
+                <div class="skill-card">
+                    <h3>Model United Nations</h3>
+                    <p>Fictional Debates about Real World Politics</p>
+                    <div class="card-btn-container">
+                        <a href="work-detail.html" class="card-btn fade-link">More Information about Model UN</a>
+                    </div>
+                </div>
+
+                <!-- Card 2: Graphic Design -->
+                <div class="skill-card">
+                    <h3>Graphic Design</h3>
+                    <p>Making Detailed Advertisements and Posters</p>
+                    <div class="card-btn-container">
+                        <a href="design-detail.html" class="card-btn fade-link">More Information about Graphic Design</a>
+                    </div>
+                </div>
+
+                <!-- Card 3: Filming & Editing -->
+                <div class="skill-card">
+                    <h3>Filming & Editing</h3>
+                    <p>Filmed and Edited Short-Length Videos</p>
+                    <div class="card-btn-container">
+                        <a href="filming-detail.html" class="card-btn fade-link">More Information about Filming & Editing</a>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- NEW FOOTER HEADER ADDED HERE -->
+        <footer style="text-align: center; padding: 40px 20px 20px; font-size: 0.85rem; color: #888;">
+            <p>Created by Emanuel Negussie</p>
+        </footer>
+
+    </div> <!-- Close page-content container -->
+
+    <!-- Mini Dark Mode Toggle Button -->
+<button id="dark-mode-toggle" class="card-btn" style="margin-left: 20px; cursor: pointer; padding: 4px 10px; font-size: 0.75rem; border-width: 1px; width: auto; border-radius: 4px;">🌙 Dark Mode</button>
+
+<script>
+    const toggleButton = document.getElementById('dark-mode-toggle');
+    const body = document.body;
+
+    // Check if the user previously picked Dark Mode
+    if (localStorage.getItem('darkMode') === 'enabled') {
+        body.classList.add('dark-mode');
+        toggleButton.textContent = '☀️ Light Mode';
+    }
+
+    toggleButton.addEventListener('click', () => {
+        body.classList.toggle('dark-mode');
+
+        // Switch button text based on the mode
+        if (body.classList.contains('dark-mode')) {
+            localStorage.setItem('darkMode', 'enabled');
+            toggleButton.textContent = '☀️ Light Mode';
+        } else {
+            localStorage.setItem('darkMode', 'disabled');
+            toggleButton.textContent = '🌙 Dark Mode';
+        }
+    });
+</script>
+
+
+    <!-- Embedded Fade Animation Script -->
+    <script>
+        const overlay = document.getElementById('page-overlay');
+        const fadeButtons = document.querySelectorAll('.fade-link');
+
+        fadeButtons.forEach(button => {
+            button.addEventListener('click', function(event) {
+                event.preventDefault();
+                const targetUrl = this.getAttribute('href');
+
+                if (overlay) {
+                    overlay.classList.add('active');
+                }
+
+                setTimeout(() => {
+                    window.location.href = targetUrl;
+                }, 500);
+            });
+        });
+
+        // FIX FOR THE BROWSER BACK BUTTON:
+        window.addEventListener('pageshow', function(event) {
+            if (event.persisted && overlay) {
+                overlay.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,325 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f8f9fa;
+    color: #333;
+}
+.hero-section {
+    text-align: center;
+    padding: 60px 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+.profile-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+    border: 4px solid #fff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+/* Title matches your requested custom cursive font styling */
+.Title {
+    font-family: "Playwrite NZ Guides", cursive;
+    font-size: 3rem;
+    margin-bottom: 10px;
+    font-weight: normal;
+}
+.subtitle {
+    font-size: 1.2rem;
+    color: #007bff;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+.bio {
+    font-size: 1.1rem;
+    color: #666;
+}
+.skills-section {
+    padding: 60px 10%;
+    background-color: #fff;
+    text-align: center;
+}
+.skills-section h2 {
+    font-size: 2.2rem;
+    margin-bottom: 40px;
+    color: #222;
+}
+.skills-grid {
+    display: flex;
+    gap: 25px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.skill-card {
+    background: #f8f9fa;
+    padding: 30px;
+    border-radius: 12px;
+    flex: 1;
+    min-width: 280px;
+    max-width: 350px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Pushes the button to the bottom */
+}
+.skill-card h3 {
+    margin-bottom: 12px;
+    color: #222;
+    font-size: 1.3rem;
+}
+.skill-card p {
+    color: #666;
+    margin-bottom: 25px;
+}
+/* Layout container for the card button */
+.card-btn-container {
+    margin-top: auto;
+}
+/* This code transforms the navbar links into clean buttons */
+.card-btn {
+    display: inline-block;
+    text-decoration: none;
+    color: #333;
+    font-weight: 600;
+    font-size: 0.85rem;
+    padding: 10px 15px;
+    border: 2px solid #333;
+    border-radius: 6px;
+    transition: all 0.2s ease-in-out;
+    width: 100%; /* Makes the button fill the card width */
+}
+.card-btn:hover {
+    background-color: #333;
+    color: #fff;
+}
+
+/* Update your existing overlay rule to include the fade-in animation */
+#page-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #111;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 9999;
+    /* This line triggers a smooth 0.5s fade-in on page load */
+    animation: fadeInPage 0.5s ease-in-out forwards;
+}
+
+/* JavaScript transitions will still use this class */
+#page-overlay.active {
+    opacity: 1;
+    animation: none; /* Disables the load animation when fading out */
+    transition: opacity 0.5s ease-in-out;
+}
+
+/* The actual animation mechanism */
+@keyframes fadeInPage {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+
+/* --- Project Detail Page Layout --- */
+.project-header {
+    position: relative;
+    width: 100%;
+    height: 350px;
+    overflow: hidden;
+}
+.header-banner {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.header-overlay-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); /* Darkens the image so text is readable */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    text-align: center;
+}
+.header-overlay-text h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+.project-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+    display: flex;
+    gap: 50px;
+}
+/* Main text takes up 65% of width */
+.project-story {
+    flex: 65%;
+}
+.project-story h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #222;
+}
+.project-story p {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 20px;
+    line-height: 1.7;
+}
+.back-home-btn {
+    display: inline-block;
+    margin-top: 20px;
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 600;
+}
+/* Side image column takes up 35% of width */
+.project-gallery {
+    flex: 35%;
+}
+.project-gallery h3 {
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+    color: #222;
+}
+.side-images {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.side-images img {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    transition: transform 0.2s ease;
+}
+.side-images img:hover {
+    transform: scale(1.02);
+}
+
+/* --- NEW CORRECTED DARK MODE & CARD SHADOW SYSTEM --- */
+/* Light Mode Setup */
+:root {
+    --bg-color: #f8f9fa;
+    --text-color: #333;
+    --heading-color: #222;
+    --card-bg: #fff;
+    --card-text: #666;
+    --navbar-bg: #fff;
+    --btn-bg: #333;
+    --btn-text: #fff;
+    --border-color: #e2e8f0; 
+    --header-bg: #222222;
+    --header-text: #ffffff; 
+    --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* Dark Mode Colors */
+body.dark-mode {
+    --bg-color: #121212;
+    --text-color: #e0e0e0;
+    --heading-color: #ffffff;
+    --card-bg: #1e1e1e; 
+    --card-text: #b0b0b0;
+    --navbar-bg: #1e1e1e;
+    --btn-bg: #007bff;
+    --btn-text: #fff;
+    --border-color: #2d3748; 
+    --header-bg: #333333;
+    --header-text: #e0e0e0;
+    --card-shadow: 0 4px 15px rgba(255, 255, 255, 0.03);
+}
+
+/* Apply variables globally */
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h1, h2, h3, h4, .Title {
+    color: var(--heading-color) !important;
+}
+
+.navbar, .skills-section {
+    background-color: var(--navbar-bg) !important;
+}
+
+.project-header {
+    background-color: var(--header-bg) !important;
+    transition: background-color 0.3s ease;
+}
+
+.project-header h1, 
+.project-header p,
+.header-overlay-text h1,
+.header-overlay-text p {
+    color: var(--header-text) !important;
+}
+
+/* Fixes the vanished cards by assigning outlines and dynamic shadows */
+.skill-card, .side-images div, .project-story div {
+    background-color: var(--card-bg) !important;
+    color: var(--text-color) !important;
+    border: 1px solid var(--border-color) !important; 
+    box-shadow: var(--card-shadow) !important;
+    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Retains accent bars for history of schools list cards */
+.side-images div {
+    border-left-width: 4px !important;
+}
+
+.skill-card p, .side-images div p, .bio {
+    color: var(--card-text) !important;
+}
+
+.card-btn {
+    border-color: var(--text-color) !important;
+    color: var(--text-color) !important;
+}
+
+.card-btn:hover {
+    background-color: var(--text-color) !important;
+    color: var(--bg-color) !important;
+}
+
+/* Mobile Responsive Breakpoint */
+@media (max-width: 768px) {
+    .project-container {
+        flex-direction: column; /* Stacks text on top of images on phones */
+    }
+}
+
+/* --- Entrance Slide & Fade Animation for All Pages --- */
+#page-content {
+    opacity: 0;
+    animation: slideDownFadeIn 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+@keyframes slideDownFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-30px); /* Starts slightly higher */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);    /* Slides smoothly into place */
+    }
+}

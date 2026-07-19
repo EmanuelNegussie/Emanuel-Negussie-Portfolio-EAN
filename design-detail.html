@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graphic Design | Emanuel</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Animation Overlay -->
+    <div id="page-overlay"></div>
+
+    <!-- Container wrapper that slides down and fades in -->
+    <div id="page-content">
+
+        <!-- Header Banner Area with a clean dark background color -->
+        <header class="project-header" style="background-color: #222;">
+            <div class="header-overlay-text">
+                <h1>Graphic Design</h1>
+                <p>Making Detailed Advertisements and Posters</p>
+            </div>
+        </header>
+
+        <!-- Split Content Layout -->
+        <div class="project-container">
+            <!-- Left Side: Main Writing -->
+            <main class="project-story">
+                <h2>About My Design Work</h2>
+                <p>
+                    This space highlights my projects I have done by hand with no human or artificial interference. I've worked on these types of posters for a while, and I like making them minimalist and detailed at the same time.
+                </p>
+                <p>
+                    Each design project starts with a random idea I want to work with, and then me playing around with the design and seeing what I like. This process also helps me learn what things I can do with the design. I use Canva Free to make these posters. Now, I know the possibility of the work I can create.
+                </p>
+                <a href="index.html" class="back-home-btn fade-link">← Back to Homepage</a>
+            </main>
+
+            <!-- Right Side: Supporting Image Gallery -->
+            <aside class="project-gallery">
+                <h3>Project Work</h3>
+                <div class="side-images">
+                    <img src="Ad.png" alt="Graphic Design Poster 1" style="width: 100%; border-radius: 8px; margin-bottom: 15px;">
+                    <img src="Ad (1).png" alt="Graphic Design Poster 2" style="width: 100%; border-radius: 8px;">
+                </div>
+            </aside>
+        </div>
+
+    </div> <!-- Close page-content container -->
+
+    <script>
+    const toggleButton = document.getElementById('dark-mode-toggle');
+    const body = document.body;
+
+    // Check if the user previously picked Dark Mode
+    if (localStorage.getItem('darkMode') === 'enabled') {
+        body.classList.add('dark-mode');
+        toggleButton.textContent = '☀️ Light Mode';
+    }
+
+    toggleButton.addEventListener('click', () => {
+        body.classList.toggle('dark-mode');
+
+        // Switch button text based on the mode
+        if (body.classList.contains('dark-mode')) {
+            localStorage.setItem('darkMode', 'enabled');
+            toggleButton.textContent = '☀️ Light Mode';
+        } else {
+            localStorage.setItem('darkMode', 'disabled');
+            toggleButton.textContent = '🌙 Dark Mode';
+        }
+    });
+</script>
+
+
+    <!-- Script to enable the back-button fade transition -->
+    <script>
+        const overlay = document.getElementById('page-overlay');
+        const fadeButtons = document.querySelectorAll('.fade-link');
+
+        fadeButtons.forEach(button => {
+            button.addEventListener('click', function(event) {
+                event.preventDefault();
+                const targetUrl = this.getAttribute('href');
+                if (overlay) overlay.classList.add('active');
+                setTimeout(() => { window.location.href = targetUrl; }, 500);
+            });
+        });
+
+        window.addEventListener('pageshow', function(event) {
+            if (event.persisted && overlay) overlay.classList.remove('active');
+        });
+    </script>
+</body>
+</html>

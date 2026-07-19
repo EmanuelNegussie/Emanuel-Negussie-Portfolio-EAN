@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects | Emanuel</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Animation Overlay -->
+    <div id="page-overlay"></div>
+
+    <!-- Container wrapper that slides down and fades in -->
+    <div id="page-content">
+
+        <!-- Header Banner Area -->
+        <header class="project-header" style="background-color: #222;">
+            <div class="header-overlay-text">
+                <h1>Independent Projects</h1>
+                <p>Explore my personal developments</p>
+            </div>
+        </header>
+
+        <!-- Split Content Layout -->
+        <div class="project-container">
+            <!-- Left Side: Main Writing -->
+            <main class="project-story">
+                <h2>My Independent Projects</h2>
+                <p>
+                    Outside of my regular school courses at Shawnigan Lake School, I dedicate to take time to build independent projects. This space tracks my development work and personal project milestones as I turn my personal concepts into reality.
+                </p>
+                <p>
+                    Working on these projects makes me learn new skills I can use within my day to day life and it also helps me to teach my peers. I'm very proud of the work I can do and I'm always ready to learn a new skill.
+                </p>
+                <a href="index.html" class="back-home-btn fade-link">← Back to Homepage</a>
+            </main>
+
+            <!-- Right Side: Project Cue Cards / List -->
+            <aside class="project-gallery">
+                <h3>Current Projects</h3>
+                <div class="side-images">
+                    <div style="background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); text-align: left; border-left: 4px solid #28a745;">
+                        <h4 style="margin-bottom: 5px; color: #222;">Website Development</h4>
+                        <p style="font-size: 0.95rem; color: #666; line-height: 1.5; margin: 0;">
+                            Instead of using an web service, I actually made this website with JavaScript with the help of AI. Since joining the AllStarCode* Program, I have learned to code with JavaScript.
+                        </p>
+                    </div>
+                    <div style="background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); text-align: left; border-left: 4px solid #007bff;">
+                        <h4 style="margin-bottom: 5px; color: #222;">Cookbook</h4>
+                        <p style="font-size: 0.95rem; color: #666; line-height: 1.5; margin: 0;">
+                            Since my oldest sister came back from the State of Alaska and made her own cookbook, I have learned how to cook and make my own recipes from insperation from youtubers and my own sister.
+                        </p>
+                    </div>
+                </div>
+            </aside>
+        </div>
+
+    </div> <!-- Close page-content container -->
+
+    <script>
+    const toggleButton = document.getElementById('dark-mode-toggle');
+    const body = document.body;
+
+    // Check if the user previously picked Dark Mode
+    if (localStorage.getItem('darkMode') === 'enabled') {
+        body.classList.add('dark-mode');
+        toggleButton.textContent = '☀️ Light Mode';
+    }
+
+    toggleButton.addEventListener('click', () => {
+        body.classList.toggle('dark-mode');
+
+        // Switch button text based on the mode
+        if (body.classList.contains('dark-mode')) {
+            localStorage.setItem('darkMode', 'enabled');
+            toggleButton.textContent = '☀️ Light Mode';
+        } else {
+            localStorage.setItem('darkMode', 'disabled');
+            toggleButton.textContent = '🌙 Dark Mode';
+        }
+    });
+</script>
+
+
+    <!-- Script to enable the back-button fade transition -->
+    <script>
+        const overlay = document.getElementById('page-overlay');
+        const fadeButtons = document.querySelectorAll('.fade-link');
+
+        fadeButtons.forEach(button => {
+            button.addEventListener('click', function(event) {
+                event.preventDefault();
+                const targetUrl = this.getAttribute('href');
+                if (overlay) overlay.classList.add('active');
+                setTimeout(() => { window.location.href = targetUrl; }, 500);
+            });
+        });
+
+        window.addEventListener('pageshow', function(event) {
+            if (event.persisted && overlay) overlay.classList.remove('active');
+        });
+    </script>
+</body>
+</html>

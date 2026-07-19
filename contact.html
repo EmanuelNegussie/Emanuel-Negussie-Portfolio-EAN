@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Emanuel</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Animation Overlay -->
+    <div id="page-overlay"></div>
+
+    <!-- Container wrapper that slides down and fades in -->
+    <div id="page-content">
+
+        <!-- Header Banner Area -->
+        <header class="project-header" style="background-color: #222;">
+            <div class="header-overlay-text">
+                <h1>Contact Emanuel</h1>
+                <p>Get in touch with me</p>
+            </div>
+        </header>
+
+        <!-- Split Content Layout -->
+        <div class="project-container">
+            <!-- Main Writing / Details -->
+            <main class="project-story" style="flex: 100%; max-width: 600px; margin: 0 auto;">
+                <h2>Let's Connect</h2>
+                <p>
+                    If necessary, these are my details you can contact me with. When contacting by phone, please be aware that I might not always be available, and it may take some time to respond to my email or phone.
+                </p>
+
+                <!-- Contact Details Block -->
+                <div style="margin: 40px 0; background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+                    <p style="margin-bottom: 15px; font-size: 1.1rem; color: #555;">
+                        <strong>Phone Number:</strong> +1 551-396-2595
+                    </p>
+                    <p style="margin-bottom: 15px; font-size: 1.1rem; color: #555;">
+                        <strong>Email:</strong> emanuel.negussie@gmail.com
+                    </p>
+                    <p style="margin-bottom: 15px; font-size: 1.1rem; color: #555;">
+                        <strong>Location:</strong> Newark/The Oranges Region, New Jersey, United States
+                    </p>
+                </div>
+                
+                <a href="index.html" class="back-home-btn fade-link">← Back to Homepage</a>
+            </main>
+        </div>
+
+    </div> <!-- Close page-content container -->
+
+    <script>
+    const toggleButton = document.getElementById('dark-mode-toggle');
+    const body = document.body;
+
+    // Check if the user previously picked Dark Mode
+    if (localStorage.getItem('darkMode') === 'enabled') {
+        body.classList.add('dark-mode');
+        toggleButton.textContent = '☀️ Light Mode';
+    }
+
+    toggleButton.addEventListener('click', () => {
+        body.classList.toggle('dark-mode');
+
+        // Switch button text based on the mode
+        if (body.classList.contains('dark-mode')) {
+            localStorage.setItem('darkMode', 'enabled');
+            toggleButton.textContent = '☀️ Light Mode';
+        } else {
+            localStorage.setItem('darkMode', 'disabled');
+            toggleButton.textContent = '🌙 Dark Mode';
+        }
+    });
+</script>
+
+
+    <!-- Script to enable the back-button fade transition -->
+    <script>
+        const overlay = document.getElementById('page-overlay');
+        const fadeButtons = document.querySelectorAll('.fade-link');
+
+        fadeButtons.forEach(button => {
+            button.addEventListener('click', function(event) {
+                event.preventDefault();
+                const targetUrl = this.getAttribute('href');
+                if (overlay) overlay.classList.add('active');
+                setTimeout(() => { window.location.href = targetUrl; }, 500);
+            });
+        });
+
+        window.addEventListener('pageshow', function(event) {
+            if (event.persisted && overlay) overlay.classList.remove('active');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Model United Nations Details</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Animation Overlay -->
+    <div id="page-overlay"></div>
+
+    <!-- Container wrapper that slides down and fades in -->
+    <div id="page-content">
+
+        <!-- Header Banner Area -->
+        <header class="project-header" style="background-color: #222;">
+            <div class="header-overlay-text">
+                <h1>Model United Nations</h1>
+                <p>A deeper look into MUN</p>
+            </div>
+        </header>
+
+        <!-- Split Content Layout -->
+        <div class="project-container">
+            <!-- Left Side: Main Writing -->
+            <main class="project-story">
+                <h2>About Model UN</h2>
+                <p>
+                    Model United Nations (MUN) is an educational simulation where students role-play as diplomats representing different countries in the United Nations. Participants debate global issues, negotiate with other delegates, and write resolutions to address international challenges. MUN helps students develop public speaking, research, critical thinking, negotiation, and leadership skills while learning about diplomacy and world affairs.
+                </p>
+                <p>
+                    I have attended 3 Conferences for MUN: GMUN (October 2025), CAHSMUN (April 2026), and BMUN (May 2026).
+                </p>
+                <p>
+                    Since joining Shawnigan Lake School, Model United Nations has become one of the most meaningful parts of my education. Through MUN, I have grown more confident in public speaking, debating, and working with others while developing a much deeper understanding of global issues and international relations. The opportunities and support at Shawnigan Lake School have inspired me to become more engaged in world affairs and have strengthened my interest in diplomacy and making a positive impact on the international community. By traveling out of campus to places I have never seen before to experience and understand MUN, my understanding of Model United Nations and world affairs has grown.
+                </p>
+                <a href="index.html" class="back-home-btn fade-link">← Back to Homepage</a>
+            </main>
+
+            <!-- Right Side: Supporting Image Gallery -->
+            <aside class="project-gallery">
+                <h3>Photos</h3>
+                <div class="side-images">
+                    <img src="IMG_6107.jpg" alt="Model UN Conference" style="width: 100%; border-radius: 8px;">
+                    <img src="IMG_6086.jpg" alt="Model UN Activity" style="width: 100%; border-radius: 8px;">
+                </div>
+            </aside>
+        </div>
+
+        <script>
+    const toggleButton = document.getElementById('dark-mode-toggle');
+    const body = document.body;
+
+    // Check if the user previously picked Dark Mode
+    if (localStorage.getItem('darkMode') === 'enabled') {
+        body.classList.add('dark-mode');
+        toggleButton.textContent = '☀️ Light Mode';
+    }
+
+    toggleButton.addEventListener('click', () => {
+        body.classList.toggle('dark-mode');
+
+        // Switch button text based on the mode
+        if (body.classList.contains('dark-mode')) {
+            localStorage.setItem('darkMode', 'enabled');
+            toggleButton.textContent = '☀️ Light Mode';
+        } else {
+            localStorage.setItem('darkMode', 'disabled');
+            toggleButton.textContent = '🌙 Dark Mode';
+        }
+    });
+</script>
+
+
+    </div> <!-- Close page-content container -->
+
+    <!-- Script to enable the back-button fade transition -->
+    <script>
+        const overlay = document.getElementById('page-overlay');
+        const fadeButtons = document.querySelectorAll('.fade-link');
+        
+        fadeButtons.forEach(button => {
+            button.addEventListener('click', function(event) {
+                event.preventDefault();
+                const targetUrl = this.getAttribute('href');
+                if (overlay) overlay.classList.add('active');
+                setTimeout(() => { window.location.href = targetUrl; }, 500);
+            });
+        });
+        
+        window.addEventListener('pageshow', function(event) {
+            if (event.persisted && overlay) overlay.classList.remove('active');
+        });
+    </script>
+</body>
+</html>
